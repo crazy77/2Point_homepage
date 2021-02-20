@@ -1,0 +1,61 @@
+@charset "utf-8";
+/*
+ * Name     : style_hero_v2.css
+ * Version  : 1.0.4
+ * Author   : onepixel studio
+ * Date     : 2020-05-10
+ ---------------------------------------------------
+ Table of contents
+ ---------------------------------------------------
+    01. main - hero
+    02. media queries
+---------------------------------------------------
+ * 본 파일은 메인 롤링이미지 버전 2를 적용하기 위한 부분 스타일시트입니다.
+ * 기존의 메인비주얼 방식이 아닌, PC - 모바일 이미지 별도 사용하는 버전으로 적용시 본 스타일 시트 내의 비주얼 소스 부분을 기존 style.css 내의 메인비주얼 CSS에 덮어쓰면 됩니다.
+*/
+
+/* ------------------------------
+ * main - hero
+------------------------------ */
+.main-hero-section .slick-track, .main-hero-section .slick-list, .main-hero-section .slick-item {height: 100%}
+.main-hero-section .slide-item {position: relative; background-size: cover; background-position: center; background-repeat: no-repeat; outline: 0; z-index: 5}
+.main-hero-section .slide-item:before {content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background-color: #000; opacity: .35; z-index: -1}
+.main-hero-section .slide-item .slide-mask {position: absolute; top: 0; left: 0; bottom: 0; right: 0; z-index: 1}
+.main-hero-section .slide-item .slide-caption {position: absolute; top: 0; left: 0; right: 0; padding: 20% 15% 0; z-index: 5}
+.main-hero-section .slide-item .slide-caption h3 {font-size: 17px; font-weight: 200; color: #fff; margin-bottom: 25px; opacity: 0; transform: translateX(30px); transition: opacity .35s, transform .35s; transition-delay: .7s}
+.main-hero-section .slide-item .slide-caption h2 {font-size: 64px; font-weight: 300; color: #fff; margin-bottom: 25px; opacity: 0; transform: translateX(30px); transition: opacity .35s, transform .35s; transition-delay: .85s}
+.main-hero-section .slide-item .slide-caption p {font-size: 19px; font-weight: 200; color: #fff; line-height: 1.8; opacity: 0; transform: translateX(30px); transition: opacity .35s, transform .35s; transition-delay: 1s}
+.main-hero-section .slide-item .slide-caption .btn-more {display: inline-block; font-size: 14px; font-weight: 300; color: #fff; letter-spacing: .1em; margin-top: 35px; padding: 16px 36px; border-radius: 30px; background-color: #4263eb; opacity: 0; transform: translateX(30px); transition: color .25s, background-color .25s, opacity .35s 1.15s, transform .35s 1.15s}
+.main-hero-section .slide-item .slide-caption .btn-more:hover {color: #4263eb; background-color: #fff}
+.main-hero-section .reset-animation .slide-caption h3, .main-hero-section .reset-animation .slide-caption h2, .main-hero-section .reset-animation .slide-caption p, .main-hero-section .reset-animation .slide-caption .btn-more {opacity: 0; transform: translate(30px); transition: all 0s}
+.main-hero-section .slick-active .slide-caption h3, .main-hero-section .slick-active .slide-caption h2, .main-hero-section .slick-active .slide-caption p, .main-hero-section .slick-active .slide-caption .btn-more {opacity: 1; transform: translateX(0)}
+.main-hero-section .slick-arrow {position: absolute; top: 50%; width: 60px; height: 60px; font-size: 40px; color: #fff; margin-top: -30px; padding: 0; border: none; background-color: transparent; outline: 0; z-index: 10; transition: transform .25s}
+.main-hero-section .slick-prev {left: 40px}
+.main-hero-section .slick-next {right: 40px}
+.main-hero-section .slick-prev:hover {transform: translateX(-10px)}
+.main-hero-section .slick-next:hover {transform: translateX(10px)}
+.main-hero-section .slick-dots {position: absolute; bottom: 50px; left: 0; right: 0; font-size: 0; text-align: center; z-index: 10}
+.main-hero-section .slick-dots li {display: inline-block; margin: 0 6px; vertical-align: middle}
+.main-hero-section .slick-dots li button {width: 8px; height: 8px; text-indent: -9999em; padding: 0; border: none; border-radius: 50%; background-color: rgba(255,255,255,.5); transition: width .25s, height .25s, background-color .25s; outline: 0}
+.main-hero-section .slick-dots li.slick-active button {width: 10px; height: 10px; background-color: #fff}
+
+/* ------------------------------
+ * media queries
+------------------------------ */
+@media (max-width: 991px) {
+    .main-hero-section .slide-item .slide-caption {padding: 25% 15% 0}
+    .main-hero-section .slide-item .slide-caption h2 {font-size: 52px}
+    .main-hero-section .slide-item .slide-caption p {font-size: 17px}
+}
+
+@media (max-width: 767px) {
+    .main-hero-section .slide-item .slide-caption {padding: 18% 60px 0}
+    .main-hero-section .slide-item .slide-caption h3 {font-size: 14px; margin-bottom: 20px}
+    .main-hero-section .slide-item .slide-caption h2 {font-size: 38px}
+    .main-hero-section .slide-item .slide-caption p {font-size: 15px}
+    .main-hero-section .slide-item .slide-caption .btn-more {margin-top: 30px}
+    .main-hero-section .slick-arrow {width: 48px; height: 48px; font-size: 32px; margin-top: -24px}
+    .main-hero-section .slick-prev {left: 5px}
+    .main-hero-section .slick-next {right: 5px}
+    .main-hero-section .slick-dots {bottom: 30px}
+}

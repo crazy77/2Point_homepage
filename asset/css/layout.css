@@ -1,0 +1,167 @@
+@charset "utf-8";
+/*
+ * Name     : layout.css
+ * Version  : 1.0.4
+ * Author   : onepixel studio
+ * Date     : 2020-05-10
+ ---------------------------------------------------
+ Table of contents
+ ---------------------------------------------------
+    01. header
+    02. container
+    03. footer
+    04. page loader
+    05. media queries
+---------------------------------------------------
+*/
+
+/* ------------------------------
+ * header
+------------------------------ */
+#header {position: fixed; top: 0; left: 0; right: 0; height: 90px; z-index: 1000; transition: all .3s}
+#header .container-wide {position: relative; height: 100%}
+#header .logo {float:left; display: table; width: 199px; height: 100%; transition: height .3s}
+#header .logo a {display: table-cell; vertical-align: middle}
+#header .logo a img {display: block; width: 100%}
+#header .btn-nav-open {position: relative; display: none; width: 20px; height: 20px; margin-left: 20px; padding: 0; border: none; background-color: transparent; cursor: pointer; outline: 0; vertical-align: middle}
+#header .btn-nav-open span {position: absolute; display: block; left: 50%; width: 16px; height: 2px; margin-left: -8px; background-color: #fff; transition: all .3s}
+#header .btn-nav-open span:first-child {top: 4px}
+#header .btn-nav-open span:nth-child(2) {top: 9px}
+#header .btn-nav-open span:last-child {top: 14px}
+#header .btn-nav-open:hover span:first-child {top: 0px}
+#header .btn-nav-open:hover span:last-child {top: 18px}
+body.nav-is-open #header .side-nav {right: 0; opacity: 1}
+#header .gnb {float: right; text-align: right}
+#header .gnb .menu-items {display: inline-block; font-size: 0; vertical-align: middle}
+#header .gnb .menu-items > li {position: relative; display: inline-block}
+#header .gnb .menu-items > li > a {position: relative; display: block; font-family: 'Poppins', 'Noto Sans KR', sans-serif; font-size: 21px; font-weight: 300; color: #fff; line-height: 90px; letter-spacing: 1px; padding: 0 20px; transition: opacity .25s, line-height .3s}
+#header .gnb .menu-items > li > a:hover, #header .gnb .menu-items > li.is-open > a, #header .gnb .menu-items > li.is-active > a {opacity: .8}
+#header .gnb .menu-items > li > .subnav-wrap {position: absolute; display: block; top: 100%; left: 0; width: 240px; text-align: left; background-color: #fff; box-shadow: 0 5px 5px 0 rgba(0,0,0,.05); visibility: hidden; overflow: hidden}
+#header .gnb .menu-items > li .subnav {padding: 30px 0}
+#header .gnb .menu-items > li .subnav > li > a {position: relative; display: block; font-size: 14px; color: #888; padding: 5px 35px; transition: color .25s}
+#header .gnb .menu-items > li .subnav > li > a span {position: relative; display: block; overflow: hidden; transition: padding-left .25s}
+#header .gnb .menu-items > li .subnav > li > a span:before {content: '\e907'; font-family: 'xeicon'; font-size: 13px; position: absolute; top: 3px; left: -10px; opacity: 0; transition: left .25s, opacity .25s}
+#header .gnb .menu-items > li .subnav > li > a:hover {color: #222}
+#header .gnb .menu-items > li .subnav > li > a:hover span {padding-left: 20px}
+#header .gnb .menu-items > li .subnav > li > a:hover span:before {left: 0; opacity: 1}
+#header .gnb .member-menu {display: inline-block; padding-left: 40px; vertical-align: middle}
+#header .gnb .member-menu li {display: inline-block}
+#header .gnb .member-menu li a {font-size: 12px; color: #fff; letter-spacing: 1px; line-height: 90px; transition: line-height .3s}
+#header .gnb .member-menu li+li a:before {content: '|'; display: inline-block; margin: 0 15px; color: #fff; opacity: .2}
+#header .side-nav {position: fixed; display: none; top: 0; right: -500px; bottom: 0; width: 440px; padding-top: 120px; background-color: #090a0a; z-index: 50; box-shadow: -30px 0 50px 0 rgba(0,0,0,.24); transition: right .45s; transition-timing-function: cubic-bezier(.77,0,.17,1)}
+#header .side-nav .btn-nav-close {position: absolute; top: 50px; right: 42px; width: 40px; height: 40px; font-size: 24px; color: #fff; padding: 0; border: none; background-color: transparent; outline: 0; opacity: .6; transition: opacity .25s}
+#header .side-nav .btn-nav-close:hover {opacity: 1}
+#header .side-nav .side-logo {padding: 0 80px}
+#header .side-nav .side-logo a {display: block; max-width: 200px}
+#header .side-nav .side-logo a img {display: block; width: 100%}
+#header .side-nav .scrollable {margin-top: 40px; max-height: calc(100% - 220px); overflow-y: auto}
+#header .side-nav .menu-items {padding: 0 80px}
+#header .side-nav .menu-items > li {padding: 12px 0}
+#header .side-nav .menu-items > li > a {position: relative; display: block; font-size: 17px; font-weight: 500; color: #555; transition: color .25s}
+#header .side-nav .menu-items > li > a span {position: relative; display: block; transition: padding-left .25s}
+#header .side-nav .menu-items > li > a span:before {content: '\e907'; font-family: 'xeicon'; font-size: 13px; position: absolute; top: 3px; left: -10px; opacity: 0; transition: left .25s, opacity .25s}
+#header .side-nav .menu-items > li.has-child-menu > a:after {content: '\e943'; position: absolute; top: 50%; right: 0; font-family: 'xeicon'; font-size: 17px; color: #aaa; margin-top: -12px; transition: transform .25s ease}
+#header .side-nav .menu-items > li > a:hover, #header .side-nav .menu-items > li.is-open > a, #header .side-nav .menu-items > li.is-active > a {color: #fff}
+#header .side-nav .menu-items > li > a:hover span, #header .side-nav .menu-items > li.is-open > a span, #header .side-nav .menu-items > li.is-active > a span {padding-left: 20px}
+#header .side-nav .menu-items > li > a:hover span:before, #header .side-nav .menu-items > li.is-open > a span:before, #header .side-nav .menu-items > li.is-active > a span:before {left: 0; opacity: 1}
+#header .side-nav .menu-items > li.is-open.has-child-menu > a:after, #header .side-nav .menu-items > li.is-active.has-child-menu > a:after {transform: rotate(180deg)}
+#header .side-nav .menu-items > li > .subnav {display: none; padding-top: 8px}
+#header .side-nav .menu-items > li > .subnav > li {padding: 6px 0}
+#header .side-nav .menu-items > li > .subnav > li > a {font-size: 14px; color: #666; transition: color .2s}
+#header .side-nav .menu-items > li > .subnav > li > a:hover, #header .side-nav .menu-items > li > .subnav > li.is-active > a {color:#eee}
+#header .side-nav .member-menu {position: absolute; bottom: 0; left: 60px; right: 60px; font-size: 0; text-align: center; padding-top: 30px; padding-bottom: 60px; border-top: 4px solid rgba(255,255,255,.14)}
+#header .side-nav .member-menu li {display: inline-block}
+#header .side-nav .member-menu li a {font-size: 16px; color: #666}
+#header .side-nav .member-menu li+li a:before {content: '/'; display: inline-block; margin: 0 15px; color: #fff; opacity: .2}
+#header .nav-dimmed {display: none; position: fixed; top: 0; left: 0; bottom: 0; right: 0; z-index: 30}
+#header.sticky {height: 80px; background-color: rgba(0,0,0,.9)}
+#header.sticky .gnb .menu-items > li > a {line-height: 80px}
+#header.sticky .gnb .member-menu li a {line-height: 80px}
+
+/* ------------------------------
+ * container
+------------------------------ */
+main {overflow-x: hidden}
+#container {position: relative; background-color: #fff; z-index: 20}
+
+/* ------------------------------
+ * footer
+------------------------------ */
+#footer {padding: 100px 0; background-color: #1e1e1e}
+#footer .logo {float: left; margin-top: 23px}
+#footer .footer-info {margin-left: 92px; padding-left: 70px}
+#footer .footer-info address {font-size: 20px; font-weight: 300; color: #fff; line-height: 1.46}
+#footer .footer-info address .dot {display: inline-block; color: #8f8f8f; padding: 0 5px}
+#footer .footer-info address .title {color: #8f8f8f}
+#footer .footer-info p {font-size: 20px; font-weight: 300; color: #d2d2d2; margin-top: 24px}
+
+/* ------------------------------
+ * page loader
+------------------------------ */
+#page-loader {position: fixed; top: 0; left: 0; bottom: 0; right: 0; background-color: #f8f9fa; z-index: 9999}
+#page-loader .loader {position: absolute; top: 50%; left: 50%; display: inline-block; width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 5px solid #ff27b2; animation: loader 2s infinite ease}
+#page-loader .loader .loader-inner {display: inline-block; width: 100%; background-color: #ff27b2; vertical-align: top; animation: loader-inner 2s infinite ease-in}
+
+@keyframes loader {
+    0% {transform: rotate(0deg)}
+    25% {transform: rotate(180deg)}
+    50% {transform: rotate(180deg)}
+    75% {transform: rotate(360deg)}
+    100% {transform: rotate(360deg)}
+}
+
+@keyframes loader-inner {
+    0% {height: 0%}
+    25% {height: 0%}
+    50% {height: 100%}
+    75% {height: 100%}
+    100% {height: 0%}
+}
+
+
+/* ------------------------------
+ * media queries
+------------------------------ */
+@media (min-width:768px) {
+    #header .logo .logo-dark {display: none}
+}
+
+@media (max-width:1219px) {
+    #header .btn-nav-open {display: inline-block}
+    #header .gnb .menu-items {display: none}
+    #header .side-nav {display: block}
+}
+
+@media (max-width:991px) {
+    #header .gnb {height: 100%}
+    #header .gnb:before {content: ''; display: inline-block; width: 1px; height: 100%; vertical-align: middle}
+    #header .gnb .member-menu {display: none}
+
+    #footer {padding-top: 60px; padding-bottom: 60px}
+    #footer .footer-info {padding-left: 50px}
+    #footer .footer-info address {font-size: 16px}
+    #footer .footer-info p {font-size: 16px}
+}
+
+@media (max-width:767px) {
+    #header {height: 70px}
+    #header .logo {width: 160px}
+    #header .side-nav {right: -360px; bottom: 0; width: 300px; padding-top: 100px}
+    #header .side-nav .btn-nav-close {top: 40px; right: 10px}
+    #header .side-nav .side-logo {padding: 0 40px}
+    #header .side-nav .side-logo a {max-width: 140px}
+    #header .side-nav .scrollable {max-height: calc(100% - 180px)}
+    #header .side-nav .menu-items {padding: 0 40px}
+    #header .side-nav .menu-items > li > a {font-size: 15px}
+    #header .side-nav .menu-items > li > a span:before {top: 2px}
+    #header .side-nav .menu-items > li.has-child-menu > a:after {font-size: 15px; margin-top: -11px}
+    #header .side-nav .menu-items > li > .subnav > li > a {font-size: 13px}
+    #header .side-nav .member-menu {left: 40px; right: 40px}
+    #header .side-nav .member-menu li a {font-size: 13px}
+    #header.sticky {height: 70px}
+
+    #footer .logo {float: none; width: 60px; margin-top: 0}
+    #footer .footer-info {margin-top: 20px; margin-left: 0; padding-left: 0}
+    #footer .footer-info address {font-size: 13px; line-height: 1.7}
+    #footer .footer-info p {font-size: 13px; line-height: 1.7; margin-top: 18px}
+}
